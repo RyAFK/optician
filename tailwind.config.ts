@@ -41,6 +41,7 @@ const config: Config = {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
+        'hero-xl': ['clamp(3.5rem, 6vw + 1.25rem, 7.5rem)', { lineHeight: '0.98', letterSpacing: '-0.03em' }],
         'hero-lg': ['clamp(2.75rem, 4vw + 1.5rem, 4.75rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
         'hero-md': ['clamp(2.25rem, 5vw, 3rem)', { lineHeight: '1.08', letterSpacing: '-0.01em' }],
       },

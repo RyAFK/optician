@@ -14,78 +14,101 @@ const TRUST_POINTS = [
 
 export default function Hero() {
   return (
-    <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-cream">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 sm:py-20 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-28">
-        {/* Copy */}
-        <div className="order-1 lg:order-1 lg:col-span-6">
-          <p className="font-sans text-sm font-medium uppercase tracking-[0.14em] text-terracotta">
-            Independent eye care, not a chain
-          </p>
-
-          <h1
-            id="hero-heading"
-            className="mt-5 font-display text-hero-lg font-medium text-ink"
-          >
-            Thirty minutes.{' '}
-            <span className="italic text-sage-700">One optometrist.</span> No
-            rush.
-          </h1>
-
-          <p className="mt-6 max-w-prose text-lg leading-relaxed text-stone-600">
-            Every examination includes retinal imaging and a full thirty
-            minutes with the same optometrist — not a queue. Independent,
-            unhurried, and focused entirely on your eyes.
-          </p>
-
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link
-              href="/book"
-              className="focus-ring inline-flex h-14 items-center justify-center rounded-full bg-terracotta px-8 font-sans text-base font-semibold text-cream-50 shadow-soft transition-colors hover:bg-terracotta-600 active:bg-terracotta-700"
+    <section aria-labelledby="hero-heading" className="grain relative overflow-hidden bg-cream">
+      {/* Full-width positioning context so the photo panel can bleed to the true viewport edge on large screens */}
+      <div className="relative lg:min-h-[760px]">
+        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8 lg:py-28">
+          <div className="relative z-0 lg:max-w-[min(36rem,50vw-3rem)]">
+            {/* Decorative ghost numeral — purely atmospheric, echoes the "thirty minutes" claim */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-4 -top-16 -z-10 select-none font-display text-[13rem] italic leading-none text-sage-700/[0.07] sm:-top-20 sm:text-[17rem] lg:-left-8 lg:-top-24 lg:text-[19rem]"
             >
-              Book an Eye Examination
-            </Link>
+              30
+            </span>
 
-            <Link
-              href="/services"
-              className="focus-ring group inline-flex h-14 items-center justify-center gap-2 rounded-full px-6 font-sans text-base font-medium text-ink-700 transition-colors hover:text-terracotta"
+            <p
+              className="reveal font-sans text-sm font-medium uppercase tracking-[0.14em] text-terracotta"
+              style={{ animationDelay: '0ms' }}
             >
-              Explore Our Services
-              <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
-            </Link>
+              Independent eye care, not a chain
+            </p>
+
+            <h1
+              id="hero-heading"
+              className="reveal mt-5 font-display text-hero-xl font-medium text-ink"
+              style={{ animationDelay: '90ms' }}
+            >
+              Thirty minutes.{' '}
+              <span className="italic text-sage-700">One optometrist.</span> No
+              rush.
+            </h1>
+
+            <p
+              className="reveal mt-7 max-w-prose text-lg leading-relaxed text-stone-600"
+              style={{ animationDelay: '220ms' }}
+            >
+              Every examination includes retinal imaging and a full thirty
+              minutes with the same optometrist — not a queue. Independent,
+              unhurried, and focused entirely on your eyes.
+            </p>
+
+            <div
+              className="reveal mt-9 flex flex-col gap-4 sm:flex-row sm:items-center"
+              style={{ animationDelay: '340ms' }}
+            >
+              <Link
+                href="/book"
+                className="focus-ring inline-flex h-14 items-center justify-center rounded-full bg-terracotta px-8 font-sans text-base font-semibold text-cream-50 shadow-soft transition-colors hover:bg-terracotta-600 active:bg-terracotta-700"
+              >
+                Book an Eye Examination
+              </Link>
+
+              <Link
+                href="/services"
+                className="focus-ring group inline-flex h-14 items-center justify-center gap-2 rounded-full px-6 font-sans text-base font-medium text-ink-700 transition-colors hover:text-terracotta"
+              >
+                Explore Our Services
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                  &rarr;
+                </span>
+              </Link>
+            </div>
+
+            <ul
+              className="reveal mt-10 flex flex-col gap-3 border-t border-sage-100 pt-8 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3"
+              style={{ animationDelay: '460ms' }}
+            >
+              {TRUST_POINTS.map((point) => (
+                <li key={point} className="flex items-center gap-2 text-sm text-stone-600">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    className="h-4 w-4 flex-none text-sage-500"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.704 5.29a1 1 0 010 1.415l-7.5 7.5a1 1 0 01-1.415 0l-3.5-3.5a1 1 0 111.415-1.414L8.5 12.086l6.79-6.796a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  {point}
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <ul className="mt-10 flex flex-col gap-3 border-t border-sage-100 pt-8 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
-            {TRUST_POINTS.map((point) => (
-              <li key={point} className="flex items-center gap-2 text-sm text-stone-600">
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  className="h-4 w-4 flex-none text-sage-500"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.704 5.29a1 1 0 010 1.415l-7.5 7.5a1 1 0 01-1.415 0l-3.5-3.5a1 1 0 111.415-1.414L8.5 12.086l6.79-6.796a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                {point}
-              </li>
-            ))}
-          </ul>
         </div>
 
-        {/* Photography */}
-        <div className="order-2 lg:order-2 lg:col-span-6">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2rem] shadow-soft lg:max-w-none">
+        {/* Photography — full-bleed to the viewport's right edge on large screens */}
+        <div className="reveal relative mt-12 px-6 sm:px-0 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:w-[46vw] lg:px-0" style={{ animationDelay: '260ms' }}>
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-soft lg:aspect-auto lg:h-full lg:rounded-r-none lg:rounded-l-[2.5rem]">
             <Image
               src={HERO_IMAGE_SRC}
               alt={HERO_IMAGE_ALT}
               fill
               priority
-              sizes="(min-width: 1024px) 40vw, 90vw"
+              sizes="(min-width: 1024px) 46vw, 90vw"
               className="object-cover"
               // Remove once HERO_IMAGE_SRC points at a raster photo —
               // only the placeholder SVG needs to skip optimization.
@@ -93,7 +116,10 @@ export default function Hero() {
             />
           </div>
 
-          <div className="relative mx-auto -mt-16 w-fit max-w-xs rounded-2xl bg-ink px-6 py-4 shadow-soft sm:-mt-20 lg:-ml-4 lg:mr-auto">
+          <div
+            className="reveal-rotate absolute bottom-8 left-6 w-fit max-w-xs rounded-2xl border border-dashed border-cream-50/30 bg-ink px-6 py-4 text-left shadow-soft lg:-left-10"
+            style={{ animationDelay: '620ms' }}
+          >
             <p className="font-display text-2xl italic text-cream-50">30 min</p>
             <p className="mt-0.5 font-sans text-xs text-sage-100">
               vs. roughly 10 on the high street

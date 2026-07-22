@@ -97,20 +97,6 @@ export default function TrustSection() {
             </div>
           ))}
         </div>
-
-        <figure className="mx-auto mt-16 max-w-2xl rounded-3xl border border-dashed border-sage-200 bg-cream-50 px-8 py-10 text-center sm:px-12">
-          <svg aria-hidden="true" viewBox="0 0 32 24" className="mx-auto h-8 w-8 text-sage-300" fill="currentColor">
-            <path d="M0 24V14.4C0 6.4 4.8 1.2 12.8 0l1.6 3.2C8.8 4.8 6.4 8 6.4 12.8h6.4V24H0zm17.6 0V14.4c0-8 4.8-13.2 12.8-14.4L32 3.2c-5.6 1.6-8 4.8-8 9.6h6.4V24H17.6z" />
-          </svg>
-          <blockquote className="mt-4 font-display text-xl italic leading-relaxed text-ink/80">
-            A genuine patient testimonial belongs here — we haven&rsquo;t
-            invented one. Add a real quote once a patient has given consent
-            to be featured.
-          </blockquote>
-          <figcaption className="mt-5 font-sans text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
-            Testimonial pending — content needed from the practice
-          </figcaption>
-        </figure>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // Mobile-only persistent booking action. Deliberately a single action, not
 // a click-to-call button too: there's no real phone number established
@@ -15,8 +16,10 @@ import Link from 'next/link';
 export default function MobileBookingBar() {
   const [hidden, setHidden] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
+  const isBookPage = usePathname() === '/book';
 
   useEffect(() => {
+    if (isBookPage) return;
     const targets = document.querySelectorAll('[data-primary-cta]');
     if (targets.length === 0) return;
 
@@ -39,7 +42,11 @@ export default function MobileBookingBar() {
 
     targets.forEach((target) => observer.observe(target));
     return () => observer.disconnect();
-  }, []);
+  }, [isBookPage]);
+
+  // The /book page's own form submit button is the booking action already
+  // — a floating "Book an Appointment" bar over it would be circular.
+  if (isBookPage) return null;
 
   return (
     <div

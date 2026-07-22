@@ -1,0 +1,20 @@
+<svg width="960" height="1200" viewBox="0 0 960 1200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for a candid moment between staff and a patient">
+  <!-- PLACEHOLDER ONLY. Swap point: app/contact-lenses/page.tsx (HERO_IMAGE_SRC). -->
+  <defs>
+    <linearGradient id="ciWash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DCE5D9" />
+      <stop offset="100%" stop-color="#F7F3EC" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#ciWash)" />
+  <g opacity="0.5" stroke="#3E5A3C" stroke-width="3.5" fill="none">
+    <circle cx="360" cy="480" r="90" />
+    <path d="M220 760c0-110 65-200 140-200s140 90 140 200" />
+    <circle cx="620" cy="500" r="90" />
+    <path d="M480 780c0-110 65-200 140-200s140 90 140 200" />
+  </g>
+  <g opacity="0.3" fill="#BF5B3A">
+    <circle cx="150" cy="220" r="7" />
+    <circle cx="800" cy="900" r="7" />
+  </g>
+</svg>

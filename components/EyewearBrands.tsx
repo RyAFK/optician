@@ -85,7 +85,12 @@ function CollectionCard({ collection }: { collection: Collection }) {
   );
 }
 
-export default function EyewearBrands() {
+interface EyewearBrandsProps {
+  /** Set false when embedding this on /eyewear itself — its own CTA would just link to the current page. */
+  showCta?: boolean;
+}
+
+export default function EyewearBrands({ showCta = true }: EyewearBrandsProps) {
   return (
     <section aria-labelledby="eyewear-brands-heading" className="border-t border-sage-100 bg-cream">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8 lg:py-24">
@@ -128,14 +133,16 @@ export default function EyewearBrands() {
           ))}
         </ul>
 
-        <div className="mt-14 text-center">
-          <Link
-            href="/eyewear"
-            className="focus-ring inline-flex h-12 items-center justify-center rounded-full border-2 border-terracotta px-7 font-sans text-sm font-semibold text-terracotta transition-colors hover:bg-terracotta hover:text-cream-50"
-          >
-            Explore Our Eyewear
-          </Link>
-        </div>
+        {showCta && (
+          <div className="mt-14 text-center">
+            <Link
+              href="/eyewear"
+              className="focus-ring inline-flex h-12 items-center justify-center rounded-full border-2 border-terracotta px-7 font-sans text-sm font-semibold text-terracotta transition-colors hover:bg-terracotta hover:text-cream-50"
+            >
+              Explore Our Eyewear
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

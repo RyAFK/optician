@@ -62,47 +62,87 @@ Shared utilities (`.focus-ring`, `.reveal`, `.reveal-rotate`, `.grain`) are in
   rule above forbids. Each card is honestly labeled "Brand partner — to be
   added". Static grid at `sm`+; a user-driven `scroll-snap` row on mobile
   (no autoplay — the brief this was built from explicitly said not to do a
-  generic scrolling logo strip).
+  generic scrolling logo strip). Takes a `showCta` prop (default `true`) —
+  pass `false` when embedding it on `/eyewear` itself, since its own
+  "Explore Our Eyewear" CTA would otherwise just link to the current page.
+
+## Site pages / routes
+
+Every internal link on the site resolves to a real page — there is no more
+"referenced ahead of the page being built." Non-homepage pages share two
+building blocks rather than each rolling their own header/form:
+
+- `components/PageHero.tsx` — the sub-page equivalent of `Hero.tsx`. The
+  homepage Hero's full-bleed asymmetric layout and ghost-numeral watermark
+  are a deliberate one-off "bold moment," not a pattern to repeat — PageHero
+  instead reuses the centered eyebrow/heading/intro rhythm every homepage
+  section already uses. Optional `image` prop takes an `ImageCategory`.
+- `components/RequestForm.tsx` — used by `/book` and `/contact`. **No
+  booking system or inbox exists behind this** — submitting only shows an
+  honest "we'll be in touch" confirmation state client-side; it does not
+  persist anywhere. Wire it to a real backend/email service before launch,
+  and don't change the confirmation copy to imply an instant confirmed
+  booking in the meantime (see content-honesty rule).
+
+Pages:
+- `/book` — `RequestForm` with the service-type field, submit button carries
+  `data-primary-cta`. `MobileBookingBar` and its own header CTA hide on this
+  page specifically (see below) — a floating "Book an Appointment" bar over
+  the booking form itself is circular.
+- `/contact` — "Ask a Question", `RequestForm` without the service field.
+- `/eye-care`, `/eyewear`, `/contact-lenses`, `/eye-concerns` — each reuses
+  the relevant established facts/copy from `ExpertiseSplit`,
+  `VisitorPathways`, and `lib/services.ts` rather than inventing new
+  specifics, ends with an `AppointmentPrompt` (primary CTA + one contextual
+  secondary linking to a related page). `/eyewear` also embeds
+  `EyewearBrands` (with `showCta={false}`), which is what the
+  `/eyewear#minimalist` etc. anchors from the homepage teaser resolve to.
+- `/services` — `PageHero` + the same `ServiceFinder` component used on the
+  homepage.
 
 ## Image system
 
 All photography renders through `components/EditorialImage.tsx`, driven by
 `lib/images.ts`'s `IMAGE_CATEGORIES` — a shared aspect ratio, `sizes`, and
-base dimensions per *kind* of shot (examination, styling-consultation,
-team-portrait, plus reserved categories for exterior/interior/eyewear-detail/
-customer-interaction not in use yet). Extend that config rather than
-hardcoding a one-off aspect ratio in a component. See
-`public/images/README.md` for the full category table, current placeholder
-files and their swap points, and how the art-directed mobile crop
-(`mobileSrc`) and reduced-motion-safe fade-in work.
+base dimensions per *kind* of shot. All seven categories are now in use:
+examination, styling-consultation and team-portrait on the homepage;
+exterior (`/services`), interior (`/eye-concerns`), customer-interaction
+(`/contact-lenses`), and eyewear-detail (`EyewearBrands`) on the pages built
+to complete the site. Extend `IMAGE_CATEGORIES` rather than hardcoding a
+one-off aspect ratio in a component — and remember to add any new file glob
+to `tailwind.config.ts`'s `content` array if you introduce a category whose
+Tailwind classes wouldn't otherwise appear literally in a scanned file (see
+the Tailwind content-scanning note below). See `public/images/README.md` for
+the full category table, current placeholder files and their swap points,
+and how the art-directed mobile crop (`mobileSrc`) and reduced-motion-safe
+fade-in work.
 
 ## Appointment CTA journey
 
-Primary label is always exactly **"Book an Appointment"**, linking to `/book`
-(no such page exists yet, same as `/services`, `/eye-care` etc. — routes are
-referenced ahead of the pages being built, an established convention in this
-project). Every primary CTA carries a `data-primary-cta` attribute — don't
+Primary label is always exactly **"Book an Appointment"**, linking to
+`/book`. Every primary CTA carries a `data-primary-cta` attribute — don't
 drop it when editing one, `MobileBookingBar` depends on it.
 
 - `components/SiteHeader.tsx` — site-wide, sticky at `lg`+. Wordmark + the
-  primary CTA, nothing else: no other pages exist to link to yet, and
-  inventing nav items for unbuilt routes would read as broken links. The CTA
-  is hidden below `lg` — `MobileBookingBar` already covers mobile.
+  primary CTA, nothing else — still deliberately minimal even now that more
+  pages exist, to avoid a nav menu that just repeats the footer-less site's
+  small page count. The CTA is hidden below `lg` — `MobileBookingBar`
+  already covers mobile.
 - `components/MobileBookingBar.tsx` — fixed bottom bar, `lg:hidden`. Single
   action only; no click-to-call button, since no real phone number exists
   anywhere in this project (see content-honesty rule above). Auto-hides
   itself (IntersectionObserver on `[data-primary-cta]`) whenever a primary
   CTA already on the page is in view, so it doesn't sit directly under an
-  identical button.
+  identical button — and doesn't render at all on `/book` (checks
+  `usePathname()`), since that page's own submit button already is the
+  booking action.
 - `components/AppointmentPrompt.tsx` — reusable quiet one-line CTA strip
   (message + primary + one contextual secondary link) for between major
   sections. Used after `VisitorPathways` and after `ExpertiseSplit` on the
-  homepage. Deliberately not a boxed/colored block — it's meant to read as a
-  rhythm beat, not another competing section.
-- No service pages or branch pages exist to put an end-of-page CTA on (see
-  business-reality note above for branch pages specifically) — if/when a
-  service page is built, give it the same primary CTA + a contextual
-  secondary at the end.
+  homepage, and at the end of every service page (`/eye-care`, `/eyewear`,
+  `/contact-lenses`, `/eye-concerns`). Deliberately not a boxed/colored
+  block — it's meant to read as a rhythm beat, not another competing
+  section.
 
 ## Verification habits established in this project
 

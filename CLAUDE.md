@@ -43,13 +43,30 @@ Shared utilities (`.focus-ring`, `.reveal`, `.reveal-rotate`, `.grain`) are in
   desktop, ghost "30" numeral watermark.
 - `components/VisitorPathways.tsx` — four intent-based nav cards.
 - `components/ExpertiseSplit.tsx` — clinical vs. eyewear two-column split.
-- `components/TrustSection.tsx` — three honesty commitments.
+- `components/ServiceFinder.tsx` — filterable list of services (data from
+  `lib/services.ts`), the single-location equivalent of a branch/service
+  finder — see the business-reality note above for why there's no
+  location filter.
+- `components/TrustSection.tsx` — three honesty commitments, plus a small
+  team-portrait moment reinforcing "same optometrist every visit".
 - `components/Testimonials.tsx` — featured + supporting cards on desktop,
   accessible swipeable carousel below `lg`. Data comes from
   `lib/testimonials.ts` (explicitly sample data — see its header comment).
   Accepts an optional `branchId` prop, unused today, kept only so this
   component could serve a future branch page without a rewrite — this is
   not an invitation to build branch pages now (see above).
+
+## Image system
+
+All photography renders through `components/EditorialImage.tsx`, driven by
+`lib/images.ts`'s `IMAGE_CATEGORIES` — a shared aspect ratio, `sizes`, and
+base dimensions per *kind* of shot (examination, styling-consultation,
+team-portrait, plus reserved categories for exterior/interior/eyewear-detail/
+customer-interaction not in use yet). Extend that config rather than
+hardcoding a one-off aspect ratio in a component. See
+`public/images/README.md` for the full category table, current placeholder
+files and their swap points, and how the art-directed mobile crop
+(`mobileSrc`) and reduced-motion-safe fade-in work.
 
 ## Verification habits established in this project
 

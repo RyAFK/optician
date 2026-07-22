@@ -1,8 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import EditorialImage from './EditorialImage';
 
-// Swap point for real photography — see public/images/README.md.
+// Swap points for real photography — see public/images/README.md.
 const HERO_IMAGE_SRC = '/images/hero-practice.svg';
+const HERO_IMAGE_MOBILE_SRC = '/images/hero-practice-mobile.svg';
 const HERO_IMAGE_ALT =
   'An optometrist at Optician reviewing a retinal scan with a patient during an eye examination';
 
@@ -102,19 +103,15 @@ export default function Hero() {
 
         {/* Photography — full-bleed to the viewport's right edge on large screens */}
         <div className="reveal relative mt-12 px-6 sm:px-0 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:w-[46vw] lg:px-0" style={{ animationDelay: '260ms' }}>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-soft lg:aspect-auto lg:h-full lg:rounded-r-none lg:rounded-l-[2.5rem]">
-            <Image
-              src={HERO_IMAGE_SRC}
-              alt={HERO_IMAGE_ALT}
-              fill
-              priority
-              sizes="(min-width: 1024px) 46vw, 90vw"
-              className="object-cover"
-              // Remove once HERO_IMAGE_SRC points at a raster photo —
-              // only the placeholder SVG needs to skip optimization.
-              unoptimized={HERO_IMAGE_SRC.endsWith('.svg')}
-            />
-          </div>
+          <EditorialImage
+            category="examination"
+            src={HERO_IMAGE_SRC}
+            mobileSrc={HERO_IMAGE_MOBILE_SRC}
+            alt={HERO_IMAGE_ALT}
+            priority
+            sizes="(min-width: 1024px) 46vw, 90vw"
+            wrapperClassName="shadow-soft aspect-[4/5] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:h-full lg:rounded-r-none lg:rounded-l-[2.5rem]"
+          />
 
           <div
             className="reveal-rotate absolute bottom-8 left-6 w-fit max-w-xs rounded-2xl border border-dashed border-cream-50/30 bg-ink px-6 py-4 text-left shadow-soft lg:-left-10"

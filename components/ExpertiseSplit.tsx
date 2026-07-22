@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import EditorialImage from './EditorialImage';
 
 // Swap points for real photography — see public/images/README.md.
 const CLINICAL_IMAGE_SRC = '/images/clinical-diagnostics.svg';
@@ -64,16 +64,13 @@ export default function ExpertiseSplit() {
         <div className="mt-16 grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-0 lg:divide-x lg:divide-sage-200">
           {/* Clinical */}
           <div className="lg:pr-14">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-soft">
-              <Image
-                src={CLINICAL_IMAGE_SRC}
-                alt={CLINICAL_IMAGE_ALT}
-                fill
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
-                unoptimized={CLINICAL_IMAGE_SRC.endsWith('.svg')}
-              />
-            </div>
+            <EditorialImage
+              category="examination"
+              src={CLINICAL_IMAGE_SRC}
+              alt={CLINICAL_IMAGE_ALT}
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              wrapperClassName="shadow-soft aspect-[4/5] overflow-hidden rounded-3xl"
+            />
 
             <p className="mt-8 font-sans text-sm font-medium uppercase tracking-[0.14em] text-sage-700">
               Not a rushed once-over
@@ -105,16 +102,13 @@ export default function ExpertiseSplit() {
 
           {/* Eyewear */}
           <div className="lg:pl-14">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-soft">
-              <Image
-                src={EYEWEAR_IMAGE_SRC}
-                alt={EYEWEAR_IMAGE_ALT}
-                fill
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
-                unoptimized={EYEWEAR_IMAGE_SRC.endsWith('.svg')}
-              />
-            </div>
+            <EditorialImage
+              category="styling-consultation"
+              src={EYEWEAR_IMAGE_SRC}
+              alt={EYEWEAR_IMAGE_ALT}
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              wrapperClassName="shadow-soft aspect-[4/5] overflow-hidden rounded-3xl"
+            />
 
             <p className="mt-8 font-sans text-sm font-medium uppercase tracking-[0.14em] text-terracotta">
               Not fitted off a shelf

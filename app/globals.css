@@ -52,6 +52,18 @@
     animation: fade-up-rotate 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  /*
+   * Fade-in for EditorialImage. Deliberately a plain CSS animation rather
+   * than a JS onLoad flag: onLoad on a server-rendered <img> races with
+   * hydration — a small local image can finish loading before React
+   * attaches the listener, so the event never fires and the image is
+   * stuck at opacity 0. A CSS animation always plays regardless of when/
+   * whether the underlying image has actually finished loading.
+   */
+  .image-fade-in {
+    animation: fade-in-only 0.7s ease-out both;
+  }
+
   /* Subtle paper-grain texture for sections that want tactile warmth over a flat fill. */
   .grain {
     position: relative;
@@ -88,5 +100,14 @@
   to {
     opacity: 1;
     transform: translateY(0) rotate(-3deg);
+  }
+}
+
+@keyframes fade-in-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

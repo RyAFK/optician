@@ -1,6 +1,13 @@
 import type { SVGProps } from 'react';
+import EditorialImage from './EditorialImage';
 
 type IconProps = SVGProps<SVGSVGElement>;
+
+// Swap point for real photography — see public/images/README.md. This is a
+// generic, anonymous placeholder: do not pair it with an invented staff
+// name or bio (see CLAUDE.md).
+const TEAM_IMAGE_SRC = '/images/team-portrait.svg';
+const TEAM_IMAGE_ALT = 'A portrait of one of the optometrists at Optician';
 
 function BalanceIcon(props: IconProps) {
   return (
@@ -96,6 +103,21 @@ export default function TrustSection() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mx-auto mt-16 flex max-w-2xl flex-col items-center gap-6 border-t border-sage-100 pt-12 text-center sm:flex-row sm:text-left">
+          <EditorialImage
+            category="team-portrait"
+            src={TEAM_IMAGE_SRC}
+            alt={TEAM_IMAGE_ALT}
+            sizes="128px"
+            wrapperClassName="w-32 flex-none aspect-[3/4] overflow-hidden rounded-2xl shadow-soft"
+          />
+          <p className="text-stone-600">
+            <span className="font-medium text-ink">Continuity of care.</span>{' '}
+            Book your next visit and you&rsquo;ll see the same optometrist
+            again — not whoever happens to be free that day.
+          </p>
         </div>
       </div>
     </section>

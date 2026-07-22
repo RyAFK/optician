@@ -1,0 +1,28 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for mobile-cropped practice photography">
+  <!--
+    PLACEHOLDER ONLY, and the mobile ART-DIRECTED CROP for hero-practice.svg
+    — not just a smaller copy of it. When real photography replaces this,
+    shoot or crop it tighter on the subject (e.g. closer on the glasses/face)
+    than the desktop version, which has room to breathe with more
+    surrounding negative space. Swap point: components/Hero.tsx (HERO_IMAGE_MOBILE_SRC).
+  -->
+  <defs>
+    <linearGradient id="wash-m" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFE7D8" />
+      <stop offset="55%" stop-color="#DCE5D9" />
+      <stop offset="100%" stop-color="#9CB39A" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#wash-m)" />
+  <g opacity="0.55" stroke="#3E5A3C" stroke-width="4" fill="none">
+    <circle cx="290" cy="500" r="180" />
+    <circle cx="580" cy="500" r="180" />
+    <path d="M470 500 h40" />
+    <path d="M110 500 q-55 0 -55 -70" />
+    <path d="M760 500 q55 0 55 -70" />
+  </g>
+  <g opacity="0.35" fill="#BF5B3A">
+    <circle cx="640" cy="160" r="8" />
+    <circle cx="600" cy="210" r="5" />
+  </g>
+</svg>

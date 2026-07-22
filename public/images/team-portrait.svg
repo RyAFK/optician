@@ -1,0 +1,23 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for team portrait photography">
+  <!--
+    PLACEHOLDER ONLY — a generic, anonymous silhouette, not a real team
+    member. Swap point: components/TrustSection.tsx (TEAM_IMAGE_SRC).
+    Replace with a real, consented portrait of an actual staff member;
+    do not invent a name or bio to go with it (see CLAUDE.md).
+  -->
+  <defs>
+    <linearGradient id="teamWash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DCE5D9" />
+      <stop offset="100%" stop-color="#9CB39A" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#teamWash)" />
+  <g opacity="0.55" stroke="#3E5A3C" stroke-width="4" fill="none">
+    <circle cx="450" cy="460" r="150" />
+    <path d="M220 1020c0-165 105-300 230-300s230 135 230 300" />
+  </g>
+  <g opacity="0.3" fill="#BF5B3A">
+    <circle cx="180" cy="220" r="7" />
+    <circle cx="220" cy="260" r="4" />
+  </g>
+</svg>

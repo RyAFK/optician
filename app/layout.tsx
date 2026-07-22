@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
+import SiteHeader from '@/components/SiteHeader';
+import MobileBookingBar from '@/components/MobileBookingBar';
 import './globals.css';
 
 const display = Fraunces({
@@ -26,7 +28,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <div className="pb-20 lg:pb-0">{children}</div>
+        <MobileBookingBar />
+      </body>
     </html>
   );
 }

@@ -60,9 +60,10 @@ export default function Hero() {
             >
               <Link
                 href="/book"
+                data-primary-cta
                 className="focus-ring inline-flex h-14 items-center justify-center rounded-full bg-terracotta px-8 font-sans text-base font-semibold text-cream-50 shadow-soft transition-colors hover:bg-terracotta-600 active:bg-terracotta-700"
               >
-                Book an Eye Examination
+                Book an Appointment
               </Link>
 
               <Link

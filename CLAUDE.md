@@ -68,6 +68,34 @@ hardcoding a one-off aspect ratio in a component. See
 files and their swap points, and how the art-directed mobile crop
 (`mobileSrc`) and reduced-motion-safe fade-in work.
 
+## Appointment CTA journey
+
+Primary label is always exactly **"Book an Appointment"**, linking to `/book`
+(no such page exists yet, same as `/services`, `/eye-care` etc. — routes are
+referenced ahead of the pages being built, an established convention in this
+project). Every primary CTA carries a `data-primary-cta` attribute — don't
+drop it when editing one, `MobileBookingBar` depends on it.
+
+- `components/SiteHeader.tsx` — site-wide, sticky at `lg`+. Wordmark + the
+  primary CTA, nothing else: no other pages exist to link to yet, and
+  inventing nav items for unbuilt routes would read as broken links. The CTA
+  is hidden below `lg` — `MobileBookingBar` already covers mobile.
+- `components/MobileBookingBar.tsx` — fixed bottom bar, `lg:hidden`. Single
+  action only; no click-to-call button, since no real phone number exists
+  anywhere in this project (see content-honesty rule above). Auto-hides
+  itself (IntersectionObserver on `[data-primary-cta]`) whenever a primary
+  CTA already on the page is in view, so it doesn't sit directly under an
+  identical button.
+- `components/AppointmentPrompt.tsx` — reusable quiet one-line CTA strip
+  (message + primary + one contextual secondary link) for between major
+  sections. Used after `VisitorPathways` and after `ExpertiseSplit` on the
+  homepage. Deliberately not a boxed/colored block — it's meant to read as a
+  rhythm beat, not another competing section.
+- No service pages or branch pages exist to put an end-of-page CTA on (see
+  business-reality note above for branch pages specifically) — if/when a
+  service page is built, give it the same primary CTA + a contextual
+  secondary at the end.
+
 ## Verification habits established in this project
 
 - After any visual/CSS change: `npm run build`, then `next start` (kill any

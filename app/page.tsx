@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import VisitorPathways from '@/components/VisitorPathways';
 import ExpertiseSplit from '@/components/ExpertiseSplit';
 import ServiceFinder from '@/components/ServiceFinder';
+import EyewearBrands from '@/components/EyewearBrands';
 import TrustSection from '@/components/TrustSection';
 import Testimonials from '@/components/Testimonials';
 import AppointmentPrompt from '@/components/AppointmentPrompt';
@@ -23,6 +24,7 @@ export default function Home() {
         secondaryHref="/eye-care"
       />
       <ServiceFinder />
+      <EyewearBrands />
       <TrustSection />
       <Testimonials />
     </main>

@@ -4,7 +4,15 @@ import type { Config } from 'tailwindcss';
 // for brand colour, type and spacing — extend it rather than hard-coding
 // one-off values in components.
 const config: Config = {
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  // lib/ is included because lib/images.ts's IMAGE_CATEGORIES stores Tailwind
+  // class strings (wrapperClassName) as data, not written literally in a
+  // component — without this, Tailwind's static scanner never sees those
+  // class names and silently drops them from the compiled CSS, even though
+  // the className is applied correctly at runtime. (Found via aspect-square:
+  // every other category's default happened to be re-typed literally in a
+  // consuming component's override too, so this went unnoticed until the
+  // first category used without an override.)
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './lib/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {

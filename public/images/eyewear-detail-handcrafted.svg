@@ -1,0 +1,16 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for a close-up of a handcrafted frame hinge">
+  <!-- PLACEHOLDER ONLY. Swap point: components/EyewearBrands.tsx (COLLECTIONS[2].image). -->
+  <defs>
+    <linearGradient id="handWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DCE5D9" />
+      <stop offset="100%" stop-color="#615C4F" stop-opacity="0.35" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#handWash)" />
+  <circle cx="500" cy="500" r="150" stroke="#3E5A3C" stroke-width="2.5" fill="none" opacity="0.5" />
+  <g stroke="#3E5A3C" stroke-width="2" opacity="0.45">
+    <path d="M420 500 l20 -14 20 14 -20 14z" fill="none" />
+    <path d="M470 500 l20 -14 20 14 -20 14z" fill="none" />
+    <path d="M520 500 l20 -14 20 14 -20 14z" fill="none" />
+  </g>
+</svg>

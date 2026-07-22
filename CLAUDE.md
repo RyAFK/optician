@@ -55,6 +55,14 @@ Shared utilities (`.focus-ring`, `.reveal`, `.reveal-rotate`, `.grain`) are in
   Accepts an optional `branchId` prop, unused today, kept only so this
   component could serve a future branch page without a rewrite — this is
   not an invitation to build branch pages now (see above).
+- `components/EyewearBrands.tsx` — curated collections grouped by
+  characteristic (Minimalist/Colourful/Handcrafted/Lightweight), not named
+  brands: naming a specific real-sounding brand would be a factual claim
+  about who this practice stocks, the same category of thing the honesty
+  rule above forbids. Each card is honestly labeled "Brand partner — to be
+  added". Static grid at `sm`+; a user-driven `scroll-snap` row on mobile
+  (no autoplay — the brief this was built from explicitly said not to do a
+  generic scrolling logo strip).
 
 ## Image system
 
@@ -112,3 +120,15 @@ drop it when editing one, `MobileBookingBar` depends on it.
   `lg`) when using viewport-relative widths (`vw`) alongside fixed
   `max-width` columns — they can collide at the narrow end of a range even
   when both look fine at the extremes.
+- If a component renders visually blank despite the DOM/JS looking correct,
+  check whether its Tailwind classes actually made it into the compiled CSS
+  (`grep` the class name in `.next/static/css/*.css`) before assuming a
+  logic bug. `tailwind.config.ts`'s `content` globs only scan `app/`,
+  `components/`, and `lib/` — a class name that exists only as a string in
+  some other file (or is built dynamically in a way the scanner can't see)
+  silently gets no CSS rule at all, even though the className is applied
+  correctly at runtime. This already happened once: `aspect-square` lived
+  only in `lib/images.ts`'s `IMAGE_CATEGORIES` defaults, which wasn't in the
+  content glob yet, and every other category's default happened to be
+  re-typed literally in a component's override too, so it went unnoticed
+  until the first category used without one.

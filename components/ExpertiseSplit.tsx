@@ -52,9 +52,13 @@ export default function ExpertiseSplit() {
             id="expertise-heading"
             className="mt-4 font-display text-3xl italic leading-snug text-ink sm:text-4xl"
           >
-            You shouldn&rsquo;t have to choose between excellent vision care and
-            personal style — so here, you don&rsquo;t.
+            You Don&rsquo;t Have to Choose
           </h2>
+          <p className="mt-5 text-stone-600">
+            No pressure to buy, no rushed ten-minute slots, and every finding
+            explained in plain language — whether you came for your
+            prescription or your reflection.
+          </p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-0 lg:divide-x lg:divide-sage-200">
@@ -72,7 +76,7 @@ export default function ExpertiseSplit() {
             </div>
 
             <p className="mt-8 font-sans text-sm font-medium uppercase tracking-[0.14em] text-sage-700">
-              Clinical expertise
+              Not a rushed once-over
             </p>
             <h3 className="mt-3 font-display text-2xl font-medium text-ink">
               Eye care with real diagnostic depth
@@ -113,7 +117,7 @@ export default function ExpertiseSplit() {
             </div>
 
             <p className="mt-8 font-sans text-sm font-medium uppercase tracking-[0.14em] text-terracotta">
-              Eyewear, styled
+              Not fitted off a shelf
             </p>
             <h3 className="mt-3 font-display text-2xl font-medium text-ink">
               Frames chosen for you, not the catalogue

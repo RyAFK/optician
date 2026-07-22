@@ -65,6 +65,29 @@ Shared utilities (`.focus-ring`, `.reveal`, `.reveal-rotate`, `.grain`) are in
   generic scrolling logo strip). Takes a `showCta` prop (default `true`) —
   pass `false` when embedding it on `/eyewear` itself, since its own
   "Explore Our Eyewear" CTA would otherwise just link to the current page.
+  Data lives in `lib/eyewearCollections.ts`, shared with the per-collection
+  pages below — don't fork a second copy.
+
+## Eyewear collection pages (`/eyewear/[collection]`)
+
+`app/eyewear/[collection]/page.tsx` is a dynamic route (`generateStaticParams`
+prerenders all four) driven by `lib/eyewearCollections.ts`. Each collection
+now has `styles`: 4 entries of `{ label, shape }`, e.g. `{ label: 'Thin round
+metal', shape: 'round' }`. These are **descriptive shape/material previews,
+never specific product names, brands, or prices** — a request came in once
+with a reference screenshot from an unrelated e-commerce-style optician demo
+showing named products ("Skyline Aviator", $148, etc.); the layout structure
+(breadcrumb, header, collection-switcher pills, product grid) was worth
+reusing, but the specific brand/product/price content was not — that's
+exactly the kind of fabricated business fact the honesty rule above forbids,
+and this is an appointment-led boutique practice, not a self-checkout
+storefront (see the "not a sales assistant" positioning already established
+in `ExpertiseSplit`). Each style card links to `/contact` ("Ask about this
+style") rather than a buy button. `components/FrameShapeIcons.tsx` renders
+the four shapes (`round`/`rectangle`/`cat-eye`/`browline`) as plain inline
+SVGs — same pattern as the small line icons elsewhere in the site
+(`VisitorPathways`, `TrustSection`), not routed through `EditorialImage`,
+since they're decorative marks, not photography.
 
 ## Site pages / routes
 

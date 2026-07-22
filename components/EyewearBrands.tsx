@@ -1,55 +1,8 @@
 import Link from 'next/link';
 import EditorialImage from './EditorialImage';
+import { EYEWEAR_COLLECTIONS, type EyewearCollection } from '@/lib/eyewearCollections';
 
-interface Collection {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  alt: string;
-}
-
-// Deliberately no invented brand names here. Naming a specific real-sounding
-// label would be a factual claim about who this practice actually stocks —
-// the same category of thing CLAUDE.md says never to fabricate. Grouped by
-// characteristic instead (as the brief itself suggests), with each card
-// honestly marked as a slot waiting for a real brand partnership.
-const COLLECTIONS: Collection[] = [
-  {
-    id: 'minimalist',
-    name: 'Minimalist',
-    description:
-      'Clean lines and no branding on the front — frames built to disappear into your face, not announce themselves.',
-    image: '/images/eyewear-detail-minimalist.svg',
-    alt: 'Placeholder for a close-up of a minimalist, unbranded frame',
-  },
-  {
-    id: 'colourful',
-    name: 'Colourful',
-    description:
-      'Bold acetate and tortoiseshell, for anyone who treats glasses as a genuine accessory rather than a compromise.',
-    image: '/images/eyewear-detail-colourful.svg',
-    alt: 'Placeholder for a close-up of a bold, colourful acetate frame',
-  },
-  {
-    id: 'handcrafted',
-    name: 'Handcrafted',
-    description:
-      'Small workshops, hand-finished hinges and edges — the kind of detail you feel before you consciously notice it.',
-    image: '/images/eyewear-detail-handcrafted.svg',
-    alt: 'Placeholder for a close-up of a handcrafted frame hinge',
-  },
-  {
-    id: 'lightweight',
-    name: 'Lightweight',
-    description:
-      'Titanium and thin acetate for all-day wear, especially if regular frames have ever left a mark on your nose.',
-    image: '/images/eyewear-detail-lightweight.svg',
-    alt: 'Placeholder for a close-up of a lightweight titanium frame',
-  },
-];
-
-function CollectionCard({ collection }: { collection: Collection }) {
+function CollectionCard({ collection }: { collection: EyewearCollection }) {
   return (
     <div className="flex h-full w-full flex-col rounded-3xl border border-sage-100 bg-cream-50 p-6">
       <EditorialImage
@@ -73,7 +26,7 @@ function CollectionCard({ collection }: { collection: Collection }) {
       <p className="mt-2 text-sm leading-relaxed text-stone-600">{collection.description}</p>
 
       <Link
-        href={`/eyewear#${collection.id}`}
+        href={`/eyewear/${collection.id}`}
         className="focus-ring group mt-4 inline-flex w-fit items-center gap-1.5 font-sans text-sm font-medium text-terracotta transition-colors hover:text-terracotta-600"
       >
         View {collection.name.toLowerCase()} frames
@@ -110,7 +63,7 @@ export default function EyewearBrands({ showCta = true }: EyewearBrandsProps) {
 
         {/* Tablet and up: static grid, no motion at all */}
         <ul className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {COLLECTIONS.map((collection) => (
+          {EYEWEAR_COLLECTIONS.map((collection) => (
             <li key={collection.id}>
               <CollectionCard collection={collection} />
             </li>
@@ -126,7 +79,7 @@ export default function EyewearBrands({ showCta = true }: EyewearBrandsProps) {
           extra handling here.
         */}
         <ul className="-mx-6 mt-14 flex snap-x snap-mandatory scroll-smooth gap-5 overflow-x-auto px-6 pb-2 sm:hidden">
-          {COLLECTIONS.map((collection) => (
+          {EYEWEAR_COLLECTIONS.map((collection) => (
             <li key={collection.id} className="w-[78%] flex-none snap-center">
               <CollectionCard collection={collection} />
             </li>

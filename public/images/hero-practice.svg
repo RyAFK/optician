@@ -1,0 +1,29 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for practice photography">
+  <!--
+    PLACEHOLDER ONLY. Swap this file's reference in components/Hero.tsx
+    (the `heroImageSrc` prop) for a real photograph of the practice —
+    e.g. an optometrist mid-examination, or the fitting room — sized
+    around 1200x1500 (4:5 portrait) and saved as .jpg/.webp.
+  -->
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFE7D8" />
+      <stop offset="55%" stop-color="#DCE5D9" />
+      <stop offset="100%" stop-color="#9CB39A" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#wash)" />
+  <g opacity="0.5" stroke="#3E5A3C" stroke-width="3" fill="none">
+    <circle cx="430" cy="760" r="130" />
+    <circle cx="740" cy="760" r="130" />
+    <path d="M560 760 h50" />
+    <path d="M300 760 q-40 0 -40 -50" />
+    <path d="M870 760 q40 0 40 -50" />
+  </g>
+  <g opacity="0.35" fill="#BF5B3A">
+    <circle cx="960" cy="280" r="6" />
+    <circle cx="920" cy="320" r="4" />
+    <circle cx="240" cy="1180" r="6" />
+    <circle cx="280" cy="1220" r="4" />
+  </g>
+</svg>
